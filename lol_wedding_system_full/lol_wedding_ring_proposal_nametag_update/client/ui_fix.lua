@@ -1,0 +1,16 @@
+CreateThread(function()
+    Wait(1000)
+    SetNuiFocus(false, false)
+    SendNUIMessage({ action = 'hide' })
+end)
+
+RegisterCommand('weddingplanner', function()
+    SetNuiFocus(true, true)
+    SendNUIMessage({ action = 'open' })
+end, false)
+
+RegisterNUICallback('close', function(_, cb)
+    SetNuiFocus(false, false)
+    SendNUIMessage({ action = 'hide' })
+    cb({})
+end)
